@@ -18,6 +18,9 @@
     </div>
     <div class="grand-total">Grand Total: US$ 22.30 </div>
   </div>
+  <div>
+    <button @click="checkout()" >checkout</button>
+  </div>
 </div>
 </template>
 

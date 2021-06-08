@@ -39,7 +39,13 @@ export const store = new Vuex.Store({
                 commit('removeBag', productId )
             }
 
-        }
+        },
+        checkout({commit}) {
+            axios.post('http://localhost:3000/checkout', {})
+                .then(res => {
+                    commit('test', res.data)
+                })
+        },
 
 
     },
