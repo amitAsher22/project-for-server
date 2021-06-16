@@ -40,11 +40,9 @@ export const store = new Vuex.Store({
             }
 
         },
-        checkout({commit}) {
-            axios.post('http://localhost:3000/checkout', {})
-                .then(res => {
-                    commit('test', res.data)
-                })
+        async checkout({basket}) {
+            const res = await axios.post('http://localhost:3000/checkout', basket);
+            console.log('test', res.data);
         },
 
 
