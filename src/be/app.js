@@ -9,15 +9,28 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    next();
+});
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
 app.post('/checkout', (req, res) => {
-    const params = req.params;
-    const query = req.query;
     const body = req.body;
-    res.send(`the params: ${JSON.stringify(params)}, query: ${JSON.stringify(query)}, body: ${JSON.stringify(body)}`);
+    const { products } = body;
+    let total = 0;
+    for (const product of products) {
+        total = total + (product.price * product.quantity);
+    }
+    const response = {
+        total,
+    };
+    res.send(response);
 });
 
 app.listen(port, () => {

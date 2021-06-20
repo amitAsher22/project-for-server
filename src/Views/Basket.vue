@@ -38,12 +38,11 @@ export default {
     }
   },
   methods: {
-  checkout() {
+  async checkout() {
     console.log("nir" ,this.productsInBag)
-    axios.post('http://localhost:3000/checkout', {products:this.productsInBag})
-     .then(res =>{
-       console.log(res)
-     })
+    const res = await axios.post('http://localhost:3000/checkout', {products:this.productsInBag});
+     // res = {"total": 322.52}
+    updateDisplay(res);
     },
 
   },
