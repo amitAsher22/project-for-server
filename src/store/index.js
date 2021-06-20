@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from 'vuex'
 import axios from "axios";
 
+
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
@@ -40,10 +41,7 @@ export const store = new Vuex.Store({
             }
 
         },
-        async checkout({basket}) {
-            const res = await axios.post('http://localhost:3000/checkout', basket);
-            console.log('test', res.data);
-        },
+
 
 
     },
