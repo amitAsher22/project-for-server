@@ -1,4 +1,6 @@
 const express = require('express');
+const { checkout, hello } = require('./handlers');
+
 const app = express();
 const port = 3000;
 
@@ -16,25 +18,12 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.get('/', hello);
 
-app.post('/checkout', (req, res) => {
-    const body = req.body;
-    const { products } = body;
-    let total = 0;
-    let names= []
+app.post('/checkout', checkout);
 
-    for (const product of products) {
-        total = total + (product.price * product.quantity);
-        names.push(product.title)
-    }
-    const response = {
-        total,
-        names,
-    };
-    res.send(response);
+app.post('/hi', (req, res) => {
+    res.send('hi there');
 });
 
 app.listen(port, () => {
