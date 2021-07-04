@@ -16,7 +16,7 @@
           <span class="amount">US$ {{ (itemProduct.price * itemProduct.quantity).toFixed(2) }}</span>
         </div>
       </div>
-      <div class="grand-total">Grand Total: US$ 22.30</div>
+      <div class="grand-total">Grand Total: US$ {{total}}</div>
     </div>
     <div>
       <button class="cheackOut" @click="checkout()">checkOut to server</button>
@@ -34,17 +34,16 @@ export default {
   computed: mapState(['productsInBag']),
   data(){
     return{
-      productsFromMyBag:this.productsInBag
+      total:"",
     }
   },
   methods: {
-  async checkout() {
-    console.log("nir" ,this.productsInBag)
-    const res = await axios.post('http://localhost:3000/checkout', {products:this.productsInBag});
-     // res = {"total": 322.52}
-    updateDisplay(res);
+    async checkout() {
+      const res = await axios.post('http://localhost:3000/checkout', {products:this.productsInBag});
+      console.log( "totalFromServer",res.data.total.toFixed(2))
+      this.total = res.data.total.toFixed(2) //////// done
+      //TODO: implement update display
     },
-
   },
 
 }

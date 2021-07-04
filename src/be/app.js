@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -24,11 +24,15 @@ app.post('/checkout', (req, res) => {
     const body = req.body;
     const { products } = body;
     let total = 0;
+    let names= []
+
     for (const product of products) {
         total = total + (product.price * product.quantity);
+        names.push(product.title)
     }
     const response = {
         total,
+        names,
     };
     res.send(response);
 });
