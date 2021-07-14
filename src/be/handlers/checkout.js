@@ -1,11 +1,9 @@
-const hello = (req, res) => {
-    res.send('Hello World!');
-};
+
 
 const checkout = (req, res) => {
     try {
         const body = req.body;
-        console.log(body);
+        console.log("work",body);
         const { products } = body;
         let total = 0;
         let names= []
@@ -21,11 +19,10 @@ const checkout = (req, res) => {
         res.send(response);
     } catch (e) {
         console.error('failed to process response', e);
-        res.status(500).send('server error');
+        res.status(500).send('server error , try again');
     }
 };
 
 module.exports = {
-    hello,
     checkout,
 };

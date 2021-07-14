@@ -1,5 +1,5 @@
 const express = require('express');
-const { checkout, hello } = require('./handlers');
+const { checkout, hello , hi ,amit } = require('./handlers');
 
 const app = express();
 const port = 3000;
@@ -22,9 +22,10 @@ app.get('/', hello);
 
 app.post('/checkout', checkout);
 
-app.post('/hi', (req, res) => {
-    res.send('hi there');
-});
+app.post('/hi', hi )
+
+app.get('/amit',amit)
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
