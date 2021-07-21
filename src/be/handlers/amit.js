@@ -1,5 +1,8 @@
 const amit = (req ,res) => {
-    res.send('amit know https')
+    res.send('<h1>this is amit page</h1>')
+    
+  
+
 }
 
 module.exports={
