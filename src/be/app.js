@@ -1,5 +1,5 @@
 const express = require('express');
-const { checkout, hello , hi ,amit } = require('./handlers');
+const { checkout, hello  ,amit } = require('./handlers');
 
 const app = express();
 const port = 3000;
@@ -22,7 +22,6 @@ app.get('/', hello);
 
 app.post('/checkout', checkout);
 
-app.post('/hi', hi )
 
 app.get('/amit',amit)
 
