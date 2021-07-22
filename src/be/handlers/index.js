@@ -6,5 +6,4 @@ module.exports = {
     checkout,
     hello,
     amit,
-
 };

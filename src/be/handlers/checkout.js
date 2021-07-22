@@ -1,17 +1,16 @@
-
+const {getTotalAndNames} = require('./process_products');
 
 const checkout = (req, res) => {
     try {
+        // read the request
         const body = req.body;
         console.log("work",body);
         const { products } = body;
-        let total = 0;
-        let names= []
 
-        for (const product of products) {
-            total = total + (product.price * product.quantity);
-            names.push(product.title)
-        }
+        // run the logic
+        let {total, names} = getTotalAndNames(products);
+
+        // return the response
         const response = {
             total,
             names,
