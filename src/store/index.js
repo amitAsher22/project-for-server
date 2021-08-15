@@ -26,11 +26,9 @@ export const store = new Vuex.Store({
 
     },
     actions: {
-        getProducts1({commit}) {
-            axios.get('https://fakestoreapi.com/products')
-                .then(res => {
-                    commit('test', res.data)
-                })
+        async getProducts1({commit}) {
+            const res = await  axios.get('https://fakestoreapi.com/products');
+            commit('test', res.data);
         },
         addToBag({commit}, product) {
             commit('addToBag', product)

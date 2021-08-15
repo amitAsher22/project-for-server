@@ -1,4 +1,4 @@
-const { getTotalAndNames } = require('../process_products');
+const { getTotal, getNames } = require('../process_products');
 
 const products = [
     {
@@ -14,11 +14,11 @@ const products = [
 ];
 
 test('check that total is calculated properly', () => {
-    const { total } = getTotalAndNames(products);
+    const total = getTotal(products);
     expect(total).toBe(8);
 });
 
 test('check that names is returned as an expected array of product names', () => {
-    const { names } = getTotalAndNames(products);
+    const names = getNames(products);
     expect(names).toStrictEqual(['product 1', 'product 2']);
 });

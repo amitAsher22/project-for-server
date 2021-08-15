@@ -1,4 +1,4 @@
-const {getTotalAndNames} = require('./process_products');
+const {getTotal, getNames} = require('./process_products');
 
 const checkout = (req, res) => {
     try {
@@ -8,7 +8,8 @@ const checkout = (req, res) => {
         const { products } = body;
 
         // run the logic
-        let {total, names} = getTotalAndNames(products);
+        const total = getTotal(products);
+        const names = getNames(products);
 
         // return the response
         const response = {

@@ -7,17 +7,24 @@
  *
  * @returns {{total: number, names: []}}
  */
-const getTotalAndNames = (products) => {
+const getTotal = (products) => {
     let total = 0;
-    let names = []
-
     for (const product of products) {
         total = total + (product.price * product.quantity);
+    }
+    return total;
+};
+
+
+const getNames = (products) => {
+    let names = []
+    for (const product of products) {
         names.push(product.title);
     }
-    return {total, names};
+    return names;
 };
 
 module.exports = {
-    getTotalAndNames,
+    getTotal,
+    getNames,
 }
