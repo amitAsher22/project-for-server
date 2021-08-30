@@ -23,7 +23,7 @@ app.get('/', hello);
 app.post('/checkout', checkout);
 
 
-app.get('/amit',amit)
+app.get('/amit', amit)
 
 
 app.listen(port, () => {
